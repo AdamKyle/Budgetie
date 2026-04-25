@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+psycopg = {extras = ["binary"], version = "*"}
+django-allauth = "*"
+pyjwt = "*"
+gunicorn = "*"
+
+[dev-packages]
+ruff = "*"
+pytest = "*"
+pytest-django = "*"
+pre-commit = "*"
+
+[requires]
+python_version = "3.14"
