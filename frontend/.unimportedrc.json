@@ -1,0 +1,19 @@
+{
+  "entry": ["src/app.tsx"],
+  "extensions": [".ts", ".tsx", ".js", ".jsx"],
+  "ignorePatterns": [
+    "dist/**",
+    "node_modules/**",
+    "vite.config.ts",
+    "eslint.config.js"
+  ],
+  "ignoreUnused": [
+    "@tailwindcss/vite",
+    "@types/node",
+    "@types/react",
+    "@types/react-dom",
+    "react-dom"
+  ],
+  "ignoreUnresolved": [],
+  "ignoreUnimported": ["src/vite-env.d.ts"]
+}

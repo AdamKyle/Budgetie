@@ -15,6 +15,13 @@ repos:
         pass_filenames: false
         stages: [pre-commit]
 
+      - id: frontend-cleanup
+        name: frontend cleanup
+        entry: docker compose run --rm --no-deps frontend yarn cleanup
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]
+
       - id: ruff-check
         name: ruff check
         entry: docker compose run --rm --no-deps backend ruff check .
@@ -25,6 +32,13 @@ repos:
       - id: ruff-format-check
         name: ruff format check
         entry: docker compose run --rm --no-deps backend ruff format . --check
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: frontend-check
+        name: frontend check
+        entry: docker compose run --rm --no-deps frontend yarn check
         language: system
         pass_filenames: false
         stages: [pre-push]

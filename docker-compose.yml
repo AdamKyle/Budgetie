@@ -32,7 +32,7 @@ services:
   frontend:
     build:
       context: ./frontend
-    command: npm run dev -- --host 0.0.0.0
+    command: sh -c "yarn install --immutable && yarn dev"
     env_file:
       - .env
     volumes:

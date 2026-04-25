@@ -1,5 +1,10 @@
 .env
-.venv/
+
+backend/.venv/
+backend/.ruff_cache/
+frontend/node_modules/
+frontend/.yarn/install-state.gz
+
 __pycache__/
 *.pyc
 *.pyo

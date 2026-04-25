@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "type": "module",
+  "packageManager": "yarn@4.14.1",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "cleanup": "prettier --write \"src/**/*.{ts,tsx,css}\" && eslint \"src/**/*.{ts,tsx}\" --fix --max-warnings=0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --max-warnings=0",
+    "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix --max-warnings=0",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
+    "type-check": "tsc --noEmit",
+    "unused-files-check": "unimported || true",
+    "check": "yarn format:check && yarn lint && yarn type-check && yarn unused-files-check && yarn build"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.2.4",
+    "axios": "1.15.2",
+    "clsx": "2.1.1",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@typescript-eslint/eslint-plugin": "8.59.0",
+    "@typescript-eslint/parser": "8.59.0",
+    "@vitejs/plugin-react": "6.0.1",
+    "eslint": "9.39.1",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-react-hooks": "7.0.1",
+    "eslint-plugin-unused-imports": "4.3.0",
+    "prettier": "3.7.4",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "typescript": "5.9.3",
+    "unimported": "1.31.1",
+    "vite": "8.0.10"
+  }
+}

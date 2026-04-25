@@ -1,0 +1,7 @@
+node_modules
+dist
+.vite
+.yarn/install-state.gz
+.pnp.*
+*.log
+.DS_Store
