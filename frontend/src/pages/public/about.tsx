@@ -1,11 +1,41 @@
+import { AboutSections } from './sections-definitions/about-section';
+
+import SectionWithImageCard from 'components/section/section-with-image-card/section-with-image-card';
+
 const About = () => {
   return (
-    <main>
-      <h1>About Budgetie</h1>
-      <p>
-        This page will explain what Budgetie is and how it helps users manage
-        their money.
-      </p>
+    <main className="bg-storm-dust-50 text-storm-dust-950 dark:bg-storm-dust-950 dark:text-storm-dust-50 px-6 py-16 transition-colors">
+      <section
+        aria-labelledby="about-budgetie-title"
+        className="mx-auto flex max-w-6xl flex-col gap-4"
+      >
+        <div className="mx-auto mb-8 max-w-2xl text-center">
+          <h1
+            className="text-4xl font-bold tracking-tight"
+            id="about-budgetie-title"
+          >
+            About Budgetie
+          </h1>
+
+          <p className="text-storm-dust-600 dark:text-storm-dust-300 mt-4 text-base leading-7">
+            Budgetie helps you manage budgets, transactions, and spending
+            periods in one simple place.
+          </p>
+        </div>
+
+        {AboutSections.map((section) => (
+          <SectionWithImageCard
+            id={section.id}
+            imageAlt={section.imageAlt}
+            imageSrc={section.imageSrc}
+            isImageRight={section.isImageRight}
+            key={section.id}
+            title={section.title}
+          >
+            <p>{section.text}</p>
+          </SectionWithImageCard>
+        ))}
+      </section>
     </main>
   );
 };

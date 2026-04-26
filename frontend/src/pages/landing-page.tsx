@@ -1,22 +1,37 @@
+import { useNavigate } from 'react-router';
+
 import budgetChart from 'assets/hero-section/budget-chart.png';
+
+import { NavigationRoutes } from 'router/enums/navigation-routes';
+import navigateToRoute from 'router/utils/navigate-to-route';
 
 import Button from 'ui/buttons/button';
 import { ButtonVariant } from 'ui/buttons/enums/button-variant';
 import HeroSection from 'ui/hero-section/hero-section';
 
 const LandingPage = () => {
+  const navigate = useNavigate();
+
+  const handleNavigateToAbout = () => {
+    navigateToRoute(navigate, NavigationRoutes.ABOUT);
+  };
+
+  const handleNavigateToRegistration = () => {
+    navigateToRoute(navigate, NavigationRoutes.REGISTER);
+  };
+
   return (
     <main>
       <HeroSection
-        title="Placeholder hero heading for Budgetie."
+        title="Budgetie Helps you budget based on periods of time
+"
         subtitle={
           <>
             <span className="block">
-              Placeholder subtitle explaining what Budgetie does clearly.
-            </span>
-            <span className="block">
-              Track spending, plan ahead, and understand your money with less
-              stress.
+              Track your income, expenses, and transactions in one place across
+              monthly budgets, pay cycles, or any custom period. As you spend,
+              Budgetie updates your budget so you always know what changed, what
+              is left, and where your money is going.
             </span>
           </>
         }
@@ -24,12 +39,12 @@ const LandingPage = () => {
         imageAlt="Budgetie dashboard preview with income, spending, savings, and an upward chart"
       >
         <Button
-          on_click={() => {}}
+          on_click={handleNavigateToRegistration}
           label="Get Started Today!"
           variant={ButtonVariant.SUCCESS}
         />
         <Button
-          on_click={() => {}}
+          on_click={handleNavigateToAbout}
           label="Learn more about Budgetie!"
           variant={ButtonVariant.PRIMARY}
         />

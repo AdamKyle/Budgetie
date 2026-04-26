@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import React from 'react';
 
 import { baseStyles } from './styles/button/base-styles';
 import { variantStyles } from './styles/button/variant-styles';
@@ -12,15 +11,15 @@ const Button = ({
   disabled,
   additional_css,
   aria_label,
+  type = 'button',
 }: ButtonProps) => {
   return (
     <button
-      onClick={on_click}
-      className={clsx(baseStyles(), variantStyles(variant), additional_css)}
       aria-label={aria_label || label}
+      className={clsx(baseStyles(), variantStyles(variant), additional_css)}
       disabled={disabled}
-      role="button"
-      type="button"
+      onClick={on_click}
+      type={type}
     >
       {label}
     </button>
