@@ -16,11 +16,11 @@ const HeroSection = ({
     <section
       aria-labelledby={titleId}
       aria-describedby={subtitleId}
-      className="min-h-screen bg-white px-6 py-16 text-slate-950 dark:bg-slate-950 dark:text-white"
+      className="bg-storm-dust-50 text-storm-dust-950 dark:bg-storm-dust-950 dark:text-storm-dust-50 min-h-screen px-6 py-16"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div>
-          <p className="text-sm font-semibold tracking-wide text-emerald-700 uppercase dark:text-emerald-400">
+          <p className="text-tom-thumb-700 dark:text-tom-thumb-300 text-sm font-semibold tracking-wide uppercase">
             Budgetie
           </p>
 
@@ -33,7 +33,7 @@ const HeroSection = ({
 
           <p
             id={subtitleId}
-            className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300"
+            className="text-storm-dust-600 dark:text-storm-dust-300 mt-6 max-w-xl text-lg leading-8"
           >
             {subtitle}
           </p>
@@ -41,7 +41,7 @@ const HeroSection = ({
           <div className="mt-8 flex flex-wrap gap-4">{children}</div>
         </div>
 
-        <div className="rounded-3xl bg-slate-100 p-4 dark:bg-slate-900">
+        <div className="bg-storm-dust-100 dark:bg-storm-dust-900 rounded-3xl p-4">
           <img
             src={imageSrc}
             alt={imageAlt}

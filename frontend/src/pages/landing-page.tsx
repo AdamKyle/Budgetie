@@ -1,6 +1,8 @@
-import budgetChart from 'assets/hero-section/budget-chart.png';
+import Button from '../ui/buttons/button';
+import { ButtonVariant } from '../ui/buttons/enums/button-variant';
+import HeroSection from '../ui/hero-section/hero-section';
 
-import HeroSection from 'components/hero-section/hero-section';
+import budgetChart from 'assets/hero-section/budget-chart.png';
 
 const LandingPage = () => {
   return (
@@ -21,19 +23,16 @@ const LandingPage = () => {
         imageSrc={budgetChart}
         imageAlt="Budgetie dashboard preview with income, spending, savings, and an upward chart"
       >
-        <button
-          type="button"
-          className="rounded-full bg-emerald-600 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:outline-none dark:focus-visible:ring-offset-slate-950"
-        >
-          Get started
-        </button>
-
-        <button
-          type="button"
-          className="rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 focus-visible:outline-none dark:border-slate-700 dark:text-white dark:hover:bg-slate-900 dark:focus-visible:ring-offset-slate-950"
-        >
-          Learn more
-        </button>
+        <Button
+          on_click={() => {}}
+          label="Get Started Today!"
+          variant={ButtonVariant.SUCCESS}
+        />
+        <Button
+          on_click={() => {}}
+          label="Learn more about Budgetie!"
+          variant={ButtonVariant.PRIMARY}
+        />
       </HeroSection>
     </main>
   );
