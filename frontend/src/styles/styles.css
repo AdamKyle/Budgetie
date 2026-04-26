@@ -73,13 +73,13 @@
 }
 
 @layer base {
-  html {
-    font-family: var(--font-sans);
+  html,
+  body,
+  #root {
+    min-height: 100%;
   }
 
   body {
     margin: 0;
-    background-color: var(--color-storm-dust-50);
-    color: var(--color-storm-dust-950);
   }
 }

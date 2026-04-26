@@ -1,30 +1,31 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useEffect, useId, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router';
 
 import type NavigationItemDefinition from './definitions/navigation-item-definition';
 import Button from '../ui/buttons/button';
 import { ButtonVariant } from '../ui/buttons/enums/button-variant';
 import IconButton from '../ui/buttons/icon-button';
-import LinkButton from '../ui/buttons/link-button';
 
 import mascotImage from 'assets/mascot/budegtie-mascot.png';
 
 const navigationItems: NavigationItemDefinition[] = [
   {
-    href: '#home',
+    href: '/',
     label: 'Home',
   },
   {
-    href: '#about',
+    href: '/about',
     label: 'About',
   },
   {
-    href: '#updates',
+    href: '/updates',
     label: 'Updates',
   },
 ];
 
 const BaseNavigation = () => {
+  const navigate = useNavigate();
   const mobileMenuId = useId();
   const shouldReduceMotion = useReducedMotion();
 
@@ -54,11 +55,13 @@ const BaseNavigation = () => {
   };
 
   const handleLogin = () => {
-    window.location.assign('/login');
+    void navigate('/login');
+    handleCloseMenu();
   };
 
   const handleRegister = () => {
-    window.location.assign('/register');
+    void navigate('/register');
+    handleCloseMenu();
   };
 
   const getThemeToggleIconClassName = () => {
@@ -77,15 +80,27 @@ const BaseNavigation = () => {
     return 'fa-solid fa-bars';
   };
 
+  const getNavigationLinkClassName = ({ isActive }: { isActive: boolean }) => {
+    const baseClassName =
+      'focus:ring-storm-dust-400 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition focus:ring-2 focus:outline-hidden';
+
+    if (isActive) {
+      return `${baseClassName} bg-storm-dust-200 text-storm-dust-950 dark:bg-storm-dust-800 dark:text-storm-dust-50`;
+    }
+
+    return `${baseClassName} text-storm-dust-700 hover:bg-storm-dust-100 dark:text-storm-dust-200 dark:hover:bg-storm-dust-900`;
+  };
+
   const renderNavigationLink = (navigationItem: NavigationItemDefinition) => {
     return (
-      <LinkButton
+      <NavLink
         key={navigationItem.href}
-        href={navigationItem.href}
-        label={navigationItem.label}
-        on_click={handleCloseMenu}
-        variant={ButtonVariant.Default}
-      />
+        to={navigationItem.href}
+        onClick={handleCloseMenu}
+        className={getNavigationLinkClassName}
+      >
+        {navigationItem.label}
+      </NavLink>
     );
   };
 
@@ -154,8 +169,8 @@ const BaseNavigation = () => {
     <header className="border-storm-dust-200 bg-storm-dust-50/95 dark:border-storm-dust-800 dark:bg-storm-dust-950/95 sticky top-0 z-50 border-b backdrop-blur">
       <nav aria-label="Main navigation" className="mx-auto max-w-7xl px-6">
         <div className="grid min-h-20 grid-cols-[auto_1fr_auto] items-center gap-4">
-          <a
-            href="#home"
+          <Link
+            to="/"
             aria-label="Budgetie home"
             className="focus:ring-storm-dust-400 inline-flex items-center rounded-lg focus:ring-2 focus:outline-hidden"
           >
@@ -165,7 +180,7 @@ const BaseNavigation = () => {
               aria-hidden="true"
               className="h-14 w-14 object-contain"
             />
-          </a>
+          </Link>
 
           <div className="hidden justify-center md:flex">
             <div className="flex items-center gap-2">

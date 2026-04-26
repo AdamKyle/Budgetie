@@ -16,9 +16,9 @@ const HeroSection = ({
     <section
       aria-labelledby={titleId}
       aria-describedby={subtitleId}
-      className="bg-storm-dust-50 text-storm-dust-950 dark:bg-storm-dust-950 dark:text-storm-dust-50 min-h-screen px-6 py-16"
+      className="bg-storm-dust-50 text-storm-dust-950 dark:bg-storm-dust-950 dark:text-storm-dust-50 flex items-center px-6 py-16"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-2">
         <div>
           <p className="text-tom-thumb-700 dark:text-tom-thumb-300 text-sm font-semibold tracking-wide uppercase">
             Budgetie
