@@ -6,16 +6,17 @@ import About from './pages/public/about';
 import Login from './pages/public/login';
 import Register from './pages/public/register';
 import Updates from './pages/public/updates';
+import { NavigationRoutes } from './react-router/enums/navigation-routes';
 
 const BudgetieApplication = () => {
   return (
     <Routes>
       <Route element={<PublicLayout />}>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/updates" element={<Updates />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path={NavigationRoutes.HOME} element={<LandingPage />} />
+        <Route path={NavigationRoutes.ABOUT} element={<About />} />
+        <Route path={NavigationRoutes.UPDATES} element={<Updates />} />
+        <Route path={NavigationRoutes.LOGIN} element={<Login />} />
+        <Route path={NavigationRoutes.REGISTER} element={<Register />} />
       </Route>
     </Routes>
   );
