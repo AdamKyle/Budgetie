@@ -13,6 +13,9 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     allowedHosts: ['budgetie.test'],
+    watch: {
+      usePolling: true,
+    },
   },
   resolve: {
     alias: {
