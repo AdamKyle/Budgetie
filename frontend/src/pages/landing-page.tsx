@@ -1,8 +1,8 @@
-import Button from '../ui/buttons/button';
-import { ButtonVariant } from '../ui/buttons/enums/button-variant';
-import HeroSection from '../ui/hero-section/hero-section';
-
 import budgetChart from 'assets/hero-section/budget-chart.png';
+
+import Button from 'ui/buttons/button';
+import { ButtonVariant } from 'ui/buttons/enums/button-variant';
+import HeroSection from 'ui/hero-section/hero-section';
 
 const LandingPage = () => {
   return (

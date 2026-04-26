@@ -1,3 +1,4 @@
+import importAlias from '@dword-design/eslint-plugin-import-alias';
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import tseslint from '@typescript-eslint/eslint-plugin';
@@ -13,6 +14,7 @@ import { fileURLToPath } from 'node:url';
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default [
+  importAlias.configs.recommended,
   {
     files: ['src/**/*.{ts,tsx}'],
     ignores: ['node_modules/', 'dist/', '**/*.d.ts'],
@@ -35,12 +37,12 @@ export default [
       },
     },
     plugins: {
-      import: importPlugin,
-      '@typescript-eslint': tseslint,
       '@stylistic': stylistic,
-      'react-hooks': reactHooks,
+      '@typescript-eslint': tseslint,
+      import: importPlugin,
       'jsx-a11y': jsxA11y,
       prettier: prettierPlugin,
+      'react-hooks': reactHooks,
       'unused-imports': unusedImports,
     },
     settings: {
@@ -53,8 +55,12 @@ export default [
             ['constants', './src/constants'],
             ['contexts', './src/contexts'],
             ['hooks', './src/hooks'],
+            ['layout', './src/layout'],
             ['pages', './src/pages'],
+            ['router', './src/react-router'],
+            ['styles', './src/styles'],
             ['types', './src/types'],
+            ['ui', './src/ui'],
             ['utils', './src/utils'],
           ],
           extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -71,6 +77,28 @@ export default [
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/no-misused-promises': 'error',
       '@typescript-eslint/no-unused-vars': 'off',
+
+      '@dword-design/import-alias/prefer-alias': [
+        'error',
+        {
+          aliasForSubpaths: true,
+          alias: {
+            api: './src/api',
+            assets: './src/assets',
+            components: './src/components',
+            constants: './src/constants',
+            contexts: './src/contexts',
+            hooks: './src/hooks',
+            layout: './src/layout',
+            pages: './src/pages',
+            router: './src/react-router',
+            styles: './src/styles',
+            types: './src/types',
+            ui: './src/ui',
+            utils: './src/utils',
+          },
+        },
+      ],
 
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
@@ -106,8 +134,12 @@ export default [
             { pattern: 'constants/**', group: 'internal', position: 'after' },
             { pattern: 'contexts/**', group: 'internal', position: 'after' },
             { pattern: 'hooks/**', group: 'internal', position: 'after' },
+            { pattern: 'layout/**', group: 'internal', position: 'after' },
             { pattern: 'pages/**', group: 'internal', position: 'after' },
+            { pattern: 'router/**', group: 'internal', position: 'after' },
+            { pattern: 'styles/**', group: 'internal', position: 'after' },
             { pattern: 'types/**', group: 'internal', position: 'after' },
+            { pattern: 'ui/**', group: 'internal', position: 'after' },
             { pattern: 'utils/**', group: 'internal', position: 'after' },
           ],
           'newlines-between': 'always',

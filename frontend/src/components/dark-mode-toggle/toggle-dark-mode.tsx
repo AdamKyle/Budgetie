@@ -1,7 +1,8 @@
 import useDarkMode from './hooks/use-dark-mode';
 import type ToggleDarkModeProps from './types/toggle-dark-mode-props';
-import { ButtonVariant } from '../../ui/buttons/enums/button-variant';
-import IconButton from '../../ui/buttons/icon-button';
+
+import { ButtonVariant } from 'ui/buttons/enums/button-variant';
+import IconButton from 'ui/buttons/icon-button';
 
 const ToggleDarkMode = ({
   additional_css,

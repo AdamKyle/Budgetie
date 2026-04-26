@@ -1,4 +1,4 @@
-import type { ButtonVariant } from '../enums/button-variant';
+import type { ButtonVariant } from 'ui/buttons/enums/button-variant';
 
 export default interface LinkButtonProps {
   href: string;

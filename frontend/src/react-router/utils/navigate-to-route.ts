@@ -1,6 +1,6 @@
 import type { NavigateFunction } from 'react-router';
 
-import type { NavigationRoutes } from '../enums/navigation-routes';
+import type { NavigationRoutes } from 'router/enums/navigation-routes';
 
 /**
  * Lets us navigate to a named route.

@@ -1,4 +1,4 @@
-import type { ButtonVariant } from '../enums/button-variant';
+import type { ButtonVariant } from 'ui/buttons/enums/button-variant';
 
 export default interface ButtonProps<T extends unknown[] = []> {
   on_click: (...args: T) => void;

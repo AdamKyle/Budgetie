@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 
-import BaseNavigation from '../components/public-navigation/base-navigation';
+import BaseNavigation from 'components/public-navigation/base-navigation';
 
 const PublicLayout = () => {
   return (

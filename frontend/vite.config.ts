@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { defineConfig } from 'vite';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -19,15 +19,13 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      api: path.resolve(dirname, 'src/api'),
       assets: path.resolve(dirname, 'src/assets'),
       components: path.resolve(dirname, 'src/components'),
-      constants: path.resolve(dirname, 'src/constants'),
-      contexts: path.resolve(dirname, 'src/contexts'),
-      hooks: path.resolve(dirname, 'src/hooks'),
+      layout: path.resolve(dirname, 'src/layout'),
       pages: path.resolve(dirname, 'src/pages'),
-      types: path.resolve(dirname, 'src/types'),
-      utils: path.resolve(dirname, 'src/utils'),
+      router: path.resolve(dirname, 'src/react-router'),
+      styles: path.resolve(dirname, 'src/styles'),
+      ui: path.resolve(dirname, 'src/ui'),
     },
   },
 });

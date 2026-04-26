@@ -2,10 +2,13 @@ import { AnimatePresence, motion } from 'motion/react';
 import { NavLink } from 'react-router';
 
 import type BaseMobileNavigationProps from './types/base-mobile-navigation-props';
-import type NavigationItemDefinition from '../../react-router/public-routes/definitions/navigation-item-definition';
-import Button from '../../ui/buttons/button';
-import { ButtonVariant } from '../../ui/buttons/enums/button-variant';
-import ToggleDarkMode from '../dark-mode-toggle/toggle-dark-mode';
+
+import ToggleDarkMode from 'components/dark-mode-toggle/toggle-dark-mode';
+
+import type NavigationItemDefinition from 'router/public-routes/definitions/navigation-item-definition';
+
+import Button from 'ui/buttons/button';
+import { ButtonVariant } from 'ui/buttons/enums/button-variant';
 
 const BaseMobileNavigation = ({
   isMenuOpen,

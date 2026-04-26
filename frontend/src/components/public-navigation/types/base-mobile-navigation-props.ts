@@ -1,4 +1,4 @@
-import type NavigationItemDefinition from '../../../react-router/public-routes/definitions/navigation-item-definition';
+import type NavigationItemDefinition from 'router/public-routes/definitions/navigation-item-definition';
 
 export default interface BaseMobileNavigationProps {
   isMenuOpen: boolean;

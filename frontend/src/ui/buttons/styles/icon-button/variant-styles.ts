@@ -1,6 +1,6 @@
 import { match } from 'ts-pattern';
 
-import { ButtonVariant } from '../../enums/button-variant';
+import { ButtonVariant } from 'ui/buttons/enums/button-variant';
 
 type IconButtonVariantStylesType = {
   button: string;

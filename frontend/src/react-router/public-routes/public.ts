@@ -1,5 +1,6 @@
-import { NavigationRoutes } from '../enums/navigation-routes';
 import type NavigationItemDefinition from './definitions/navigation-item-definition';
+
+import { NavigationRoutes } from 'router/enums/navigation-routes';
 
 const PUBLIC_NAVIGATION_ITEMS: NavigationItemDefinition[] = [
   {
