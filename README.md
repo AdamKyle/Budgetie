@@ -342,3 +342,11 @@ If we want to run a directory:
 ```bash
 docker compose exec backend python manage.py test authentication
 ```
+
+## Formattig the back end
+
+Because we use ruff, we can fail a push if we do not remember to run:
+
+```bash
+docker compose exec backend ruff format .
+```
