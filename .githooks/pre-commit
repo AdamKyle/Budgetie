@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Running cleanup before commit..."
+
+docker compose exec -T backend ruff check . --fix
+docker compose exec -T backend ruff format .
+docker compose exec -T frontend yarn cleanup
+
+if ! git diff --quiet; then
+    echo "Cleanup changed files. Run git add . and commit again."
+    exit 1
+fi
+
+echo "Cleanup passed. Continuing commit."
