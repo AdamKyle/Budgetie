@@ -1,0 +1,57 @@
+name: Backend Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  backend-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      DJANGO_SECRET_KEY: "github-actions-test-secret-key-that-is-long-enough"
+      DEBUG: "True"
+
+      POSTGRES_DB: budgetie
+      POSTGRES_USER: budgetie
+      POSTGRES_PASSWORD: budgetie
+      POSTGRES_PORT: 5432
+
+      BACKEND_PORT: 8000
+      FRONTEND_PORT: 5173
+
+      PGADMIN_DEFAULT_EMAIL: admin@budgetie.ca
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_PORT: 5050
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build backend
+        run: docker compose build backend
+
+      - name: Start backend services
+        run: docker compose up -d database backend
+
+      - name: Run Django system check
+        run: docker compose exec -T backend python manage.py check
+
+      - name: Run Ruff check
+        run: docker compose exec -T backend ruff check .
+
+      - name: Run Ruff format check
+        run: docker compose exec -T backend ruff format --check .
+
+      - name: Run tests with coverage
+        run: |
+          docker compose exec -T backend coverage run \
+            --source=. \
+            --omit="*/migrations/*,*/tests/*,manage.py,config/*" \
+            manage.py test
+
+          docker compose exec -T backend coverage report -m
+
+      - name: Stop containers
+        if: always()
+        run: docker compose down -v

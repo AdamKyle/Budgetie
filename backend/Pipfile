@@ -11,12 +11,15 @@ psycopg = {extras = ["binary"], version = "*"}
 django-allauth = "*"
 pyjwt = "*"
 gunicorn = "*"
+djangorestframework-simplejwt = "*"
+msgspec = "*"
 
 [dev-packages]
 ruff = "*"
 pytest = "*"
 pytest-django = "*"
 pre-commit = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.14"

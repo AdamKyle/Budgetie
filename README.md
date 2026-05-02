@@ -100,6 +100,69 @@ Then open the frontend:
 http://budgetie.test:5173
 ```
 
+### Django Secret Key
+
+`DJANGO_SECRET_KEY` is required in `.env`.
+
+For local development, generate a key with:
+
+```bash
+docker compose exec backend python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+
+Then add it to your env in: `DJANGO_SECRET_KEY=`.
+
+Verify it with:
+
+```bash
+docker compose exec backend python manage.py shell -c "from django.conf import settings; print(len(settings.SECRET_KEY.encode('utf-8')))"
+```
+
+And see something like:
+
+```bash
+11 objects imported automatically (use -v 2 for details).
+
+50
+```
+
+### Access to the database
+
+We use pgadmin to access the database:
+
+## pgAdmin
+
+pgAdmin is available through Docker for viewing the local Postgres database.
+
+Required `.env` values:
+
+```env
+PGADMIN_DEFAULT_EMAIL=admin@budgetie.ca
+PGADMIN_DEFAULT_PASSWORD=admin123
+PGADMIN_PORT=5050
+```
+
+These are example values for you to use.
+
+Make sure you then do:
+
+```bash
+docker compose up -d
+```
+
+Finally access here: `http://localhost:5050`
+
+When setting up the connection in pgadmin use the following:
+
+```
+Name: Budgetie Local
+Host name/address: database # pgadmin connects to postgres within the docker enviroment.
+Port: 5432
+Maintenance database: value of POSTGRES_DB
+Username: value of POSTGRES_USER
+Password: value of POSTGRES_PASSWORD
+```
+
 ## Developing on the frontend
 
 The frontend source code is mounted into Docker from the host machine.
@@ -252,14 +315,30 @@ docker compose up -d --build backend
 
 Do not rebuild from a changed `Pipfile` without updating `Pipfile.lock` as the build will fail.
 
-## What Should Be Ignored
+## Testing
 
-These should not be committed:
+Testing is one of the most vital aspects of budgetie, its how we make sure everything that is functioning
+correctly.
 
-```text
-frontend/node_modules/
-backend/.venv/
-.env
+When we want to run all the tests with coverage we do:
+
+```bash
+docker compose exec backend coverage run \
+  --source=. \
+  --omit="*/migrations/*,*/tests/*,manage.py,config/*" \
+  manage.py test
+
+docker compose exec backend coverage report -m
 ```
 
-And are ignored automatically.
+To run with out coverage:
+
+```bash
+docker compose exec backend python manage.py test
+```
+
+If we want to run a directory:
+
+```bash
+docker compose exec backend python manage.py test authentication
+```
